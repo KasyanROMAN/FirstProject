@@ -1,0 +1,28 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+<h1>Новини на сайті</h1>
+{% endblock %}
+
+{% block content %}
+    <div class='features'>
+        
+        <h1>News</h1>
+        <button class='btn btn-warning'>На сторінку</button>
+        {% if news %}
+        {% for el in news %}
+        
+        <div class='alert alert-warning'>
+
+            <h3>{{el.title}}</h3>
+            <p>{{el.anons}}</p>
+            <button><a href="{% url 'news-details' el.id %}" class='btn btn-warning'> Читати детальніше</a></button>
+        </div>
+        
+        {% endfor %}
+
+        {% else %}
+        <p>Немає новин</p>
+        {% endif %}
+    </div>
+{% endblock %}
